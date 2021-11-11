@@ -8,6 +8,9 @@ namespace Task1
         static void Main(string[] args)
         {
             string path = @"";
+            CleanFolder(path);
+
+
         }
 
         //Напишите программу, которая чистит нужную нам папку от файлов
@@ -26,9 +29,9 @@ namespace Task1
         //а также логирует исключение в консоль).
 
 
-        public void CleanFolder(string path)
+        static void CleanFolder(string path)
         {
-            TimeSpan.FromMinutes(30); // временной интервал 30 минут
+            TimeSpan.FromMinutes(1); // временной интервал 30 минут
         }
     }
 }
