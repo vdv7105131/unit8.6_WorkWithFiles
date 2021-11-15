@@ -7,10 +7,8 @@ namespace Task1
     {
         static void Main(string[] args)
         {
-            string path = @"";
-            CleanFolder(path);
-
-
+            string path = @"C:\Users\user\Desktop\111";
+            DelFolder(path);
         }
 
         //Напишите программу, которая чистит нужную нам папку от файлов
@@ -29,9 +27,22 @@ namespace Task1
         //а также логирует исключение в консоль).
 
 
-        static void CleanFolder(string path)
+        static void DelFolder(string path)
         {
-            TimeSpan.FromMinutes(1); // временной интервал 30 минут
+            try
+            {
+                DirectoryInfo delF = new DirectoryInfo(path);
+                if (delF.Exists)
+                {
+                TimeSpan.FromMinutes(30); // временной интервал 30 минут
+                delF.Delete(true);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
