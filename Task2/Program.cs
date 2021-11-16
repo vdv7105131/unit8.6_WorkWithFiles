@@ -9,8 +9,9 @@ namespace Task2
         {
             string path = @"C:\Users\user\Desktop\111";
             
-            var q = GetDir(path);
-            GetFiles(q);
+            string[] q = GetDir(path);
+            var result = GetFiles(q);
+            Console.WriteLine($"Итого: {result} байт");
         }
 
         // Напишите программу, которая считает размер папки на диске
@@ -28,18 +29,23 @@ namespace Task2
             return listDir;
         }
 
-        static string[] GetFiles(string[] dir)
+        static long GetFiles(string[] dir)
         {
+            long sum = 0;
+            long sum2 = 0;
             for (int i = 0; i < dir.Length; i++)
             {
                 string[] listFiles = Directory.GetFiles(dir[i]); // получает список файлов
-                                                                 // 
+
                 FileInfo sizeF = new FileInfo(listFiles[i]);
-                long b = sizeF.Length;  // размер файла
-                Console.WriteLine(b);
+                for (int j = 0; j < listFiles.Length; j++)
+                {
+                    long b = sizeF.Length;  // размер файла
+                    sum2 += b;
+                }
+                sum += sum2;
             }         
-            string[] a = {"", "" };
-            return a;
+            return sum;
         }
     }
 }

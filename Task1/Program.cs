@@ -8,7 +8,9 @@ namespace Task1
         static void Main(string[] args)
         {
             string path = @"C:\Users\user\Desktop\111";
-            DelFolder(path);
+            string[] listD = GetDir(path);
+            DelDir(listD);
+            DeleteFiles(path);
         }
 
         //Напишите программу, которая чистит нужную нам папку от файлов
@@ -26,22 +28,47 @@ namespace Task1
         //обработка исключений при доступе к папке(блок try-catch,
         //а также логирует исключение в консоль).
 
-
-        static void DelFolder(string path)
+        static string[] GetDir(string path)
         {
-            try
+            string[] listDir = Directory.GetDirectories(path); // получает список каталогов
+            foreach (string s in listDir)
             {
-                DirectoryInfo delF = new DirectoryInfo(path);
-                if (delF.Exists)
-                {
-                TimeSpan.FromMinutes(30); // временной интервал 30 минут
-                delF.Delete(true);
-                }
-
+                Console.WriteLine(s);
+                GetDir(s);
             }
-            catch (Exception ex)
+            return listDir;
+        }
+
+        static void DelDir(string[] dir)
+        {
+            for (int i = 0; i < dir.Length; i++)
             {
-                Console.WriteLine(ex.Message);
+                try
+                {
+
+                    DirectoryInfo delDir = new DirectoryInfo(dir[i]);
+                    if (delDir.Exists)
+                    {
+                        TimeSpan.FromMinutes(30); // временной интервал 30 минут
+                        delDir.Delete(true);
+                    }
+                    
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+
+        static void DeleteFiles(string path)
+        {
+            string[] listFiles = Directory.GetFiles(path); // получает список файлов
+
+            for (int i = 0; i < listFiles.Length; i++)
+            {
+                FileInfo delF = new FileInfo(listFiles[i]);
+                delF.Delete();                
             }
         }
     }
