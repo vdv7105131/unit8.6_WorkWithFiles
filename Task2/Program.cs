@@ -11,8 +11,6 @@ namespace Task2
             
             var q = GetDir(path);
             GetFiles(q);
-
-
         }
 
         // Напишите программу, которая считает размер папки на диске
@@ -27,15 +25,11 @@ namespace Task2
                 Console.WriteLine(s);
                 GetDir(s);
             }
-
             return listDir;
-
         }
 
         static string[] GetFiles(string[] dir)
         {
-            
-
             for (int i = 0; i < dir.Length; i++)
             {
                 string[] listFiles = Directory.GetFiles(dir[i]); // получает список файлов
@@ -44,8 +38,6 @@ namespace Task2
                 long b = sizeF.Length;  // размер файла
                 Console.WriteLine(b);
             }         
-
-
             string[] a = {"", "" };
             return a;
         }
