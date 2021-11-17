@@ -9,8 +9,9 @@ namespace Task1
         {
             string path = @"C:\Users\user\Desktop\111";
             string[] listD = GetDir(path);
-            DelDir(listD);
+            DeleteDir(listD);
             DeleteFiles(path);
+
         }
 
         //Напишите программу, которая чистит нужную нам папку от файлов
@@ -39,7 +40,7 @@ namespace Task1
             return listDir;
         }
 
-        static void DelDir(string[] dir)
+        static void DeleteDir(string[] dir)
         {
             for (int i = 0; i < dir.Length; i++)
             {
