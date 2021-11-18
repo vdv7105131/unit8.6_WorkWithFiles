@@ -20,7 +20,7 @@ namespace Task4
     }
     class Program
     {
-        const string SettingsFileName = "Students.dat";
+        const string fileName = "Students.dat";
 
         static void Main(string[] args)
         {
@@ -73,6 +73,7 @@ namespace Task4
             // группа - отдельный тесктовый документ
             // в файле - "Имя, дата рождения"
 
+            // https://docs.microsoft.com/en-us/dotnet/api/system.io.binaryreader?view=net-5.0
 
         }
 
