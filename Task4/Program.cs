@@ -9,13 +9,13 @@ namespace Task4
     {
         public string Name { get; set;}
         public string Group { get; set; }
-        public DateTime DateOfBirth { get; set;}
+        //public DateTime DateOfBirth { get; set;}
 
         public Students(string name, string group, DateTime dateOfBirth)
         {
             Name = name;
             Group = group;
-            DateOfBirth = dateOfBirth;
+            //DateOfBirth = dateOfBirth;
         }
     }
     class Program
@@ -30,9 +30,9 @@ namespace Task4
             //  в файле группы студенты перечислены построчно 
             //  в формате "Имя, дата рождения".
 
-            string path = @"C:\Users\user\Desktop\111\Students";
-            string pathF = @"C:\Users\user\Desktop\111\Students\file.txt";
-            string pathS = @"C:\Users\user\Desktop\111\Students\Students.dat";
+            string path = @"C:\Users\user\Desktop\Students";
+            string pathF = @"C:\Users\user\Desktop\Students\file.txt";
+            string pathS = @"C:\Users\user\Desktop\Students\Students.dat";
 
             CreatDir(path);
             CreatFiles(pathF);
@@ -73,7 +73,18 @@ namespace Task4
             // группа - отдельный тесктовый документ
             // в файле - "Имя, дата рождения"
 
-            // https://docs.microsoft.com/en-us/dotnet/api/system.io.binaryreader?view=net-5.0
+            string pathS = @"C:\Users\user\Desktop\Students\Students.dat";
+
+
+
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            using (var fs = new FileStream(pathS, FileMode.OpenOrCreate))
+            {
+                var newStud = (Students)formatter.Deserialize(fs);
+
+
+            }
 
         }
 
