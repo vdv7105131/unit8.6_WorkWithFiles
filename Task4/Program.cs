@@ -2,7 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace Task4
+namespace FinalTask
 {
     [Serializable]
     class Students
