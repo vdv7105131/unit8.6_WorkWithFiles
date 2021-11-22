@@ -2,7 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace Task4
+namespace FinalTask
 {
     [Serializable]
     class Students
@@ -81,13 +81,15 @@ namespace Task4
 
             using (var fs = new FileStream(pathS, FileMode.OpenOrCreate))
             {
-                var newStud = (Students)formatter.Deserialize(fs);
+                string[] studEx = new string[10];
 
-
+                var newStud = formatter.Deserialize(fs);
+                foreach (var stud in studEx)
+                {
+                    Console.WriteLine(stud);
+                }
             }
 
         }
-
     }
-
 }
